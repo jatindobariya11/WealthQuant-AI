@@ -1,86 +1,169 @@
 # WealthQuant
 
-**AI Market Intelligence Platform for Indian Stock Indices**
+## AI Market Intelligence Platform for Indian Stock Indices
 
-Designed and shipped by [Jatin Dobariya](https://github.com/jatindobariya11), an AI Product Designer with 8+ years of experience building enterprise SaaS, CRM, and AI-powered products.
+Designed and built by **Jatin Dobariya**, an AI Product Designer with 8+ years of experience creating enterprise SaaS, CRM, and AI-powered digital products.
 
-WealthQuant is an AI-powered market intelligence platform for NSE indices (NIFTY 50, BANKNIFTY, FINNIFTY). It delivers real-time market data, options analytics, AI-generated signals, and explainable predictions through a Human-Centered AI interface.
+WealthQuant is an AI-powered market intelligence platform for **NSE indices (NIFTY 50, BANKNIFTY, and FINNIFTY)**. It combines real-time market data, options analytics, AI-assisted probability forecasting, explainable AI, and quantitative research into a unified platform for data-driven market analysis.
 
-&gt; **Note:** WealthQuant is a research and analytics platform. It is not an automated trading system. Users view AI-generated intelligence and make their own decisions.
-
----
-
-## How It Was Built
-
-This platform was built using **AI-assisted development** — a modern approach where designers ship production products by orchestrating AI tools.
-
-- **Product Strategy & UX Design:** Jatin Dobariya — user flows, information architecture, trust signals, confidence scoring, explainability panels, and Low Confidence fallback states
-- **AI Code Generation:** ChatGPT, Claude, Cursor, v0.dev, Google Antigravity, Qwen, Kimi — used to generate production-grade backend and frontend code
-- **Design Validation:** The designer reviewed, tested, debugged, and iterated all AI-generated code to ensure functional, stable delivery
-- **AI Integration:** Qwen APIs and other LLM services power the intelligent market analysis and prediction UX
-
-This project demonstrates how a solo AI Product Designer can go from concept to shipped product without traditional engineering headcount.
+> **Note:** WealthQuant is a research and analytics platform. It is **not** an automated trading system. The platform provides AI-assisted insights to support decision-making, while users remain responsible for their own investment decisions.
 
 ---
 
-## Design & UX
+# 🚀 How It Was Built
 
-### Human-Centered AI Principles Applied
+WealthQuant was developed using an **AI-assisted product development workflow**, where modern AI tools accelerated implementation while product strategy, user experience, validation, testing, and final technical decisions remained under human direction.
 
-- **Trust Signals:** Every prediction displays a confidence score and regime indicator. Users know when to trust the AI and when to be skeptical.
-- **Explainability Panels:** SHAP-inspired UX explains *why* the AI made a prediction. No black boxes.
-- **Low Confidence Fallback:** When AI confidence drops below threshold, the interface shows a "Low Confidence" state instead of presenting uncertain predictions as fact.
-- **Real-Time Streaming:** WebSocket feeds update market data without page refreshes. Progressive disclosure keeps the data-dense UI clean.
-- **Data-Dense Dashboards:** Designed for financial professionals who need OHLCV, options chain, PCR, and VIX data in a single, scannable view.
+### Product Strategy & UX Design
+
+Designed by **Jatin Dobariya**
+
+Responsibilities included:
+
+- Product strategy
+- User flows
+- Information architecture
+- Dashboard UX
+- Human-Centered AI
+- Design systems
+- Trust signals
+- Confidence scoring
+- Explainability panels
+- Low Confidence fallback states
 
 ---
 
-## Key Features
+### AI-Assisted Development
 
-- Real-time market intelligence dashboard
+Implementation was accelerated using modern AI development assistants including:
+
+- ChatGPT
+- Claude
+- Cursor
+- v0.dev
+- Google Antigravity
+- Qwen
+- Kimi
+
+These tools were used to assist with implementation, debugging, documentation, and code generation.
+
+All generated code was reviewed, integrated, tested, refined, and validated before becoming part of the platform.
+
+---
+
+### AI Integration
+
+The platform integrates modern LLM services to power intelligent market analysis, explainability, and AI-assisted prediction workflows.
+
+---
+
+# 🎯 Design Principles
+
+## Human-Centered AI
+
+The platform follows Human-Centered AI principles throughout the product experience.
+
+### Trust Signals
+
+Every prediction displays:
+
+- Confidence Score
+- Market Regime
+- Prediction Confidence
+
+allowing users to understand when AI confidence is high or when additional caution is appropriate.
+
+---
+
+### Explainability
+
+Prediction panels provide transparent explanations for generated insights rather than presenting opaque "black box" outputs.
+
+---
+
+### Low Confidence UX
+
+When prediction confidence falls below predefined thresholds, the interface displays a **Low Confidence** state instead of presenting uncertain predictions as reliable recommendations.
+
+---
+
+### Real-Time Experience
+
+- Live WebSocket updates
+- Progressive disclosure
+- Low-latency dashboards
+- Data-first interface
+
+---
+
+### Professional Dashboard Design
+
+The interface is optimized for dense financial information including:
+
+- OHLCV
+- Options Chain
+- PCR
+- Open Interest
+- India VIX
+- Institutional Flow
+
+while maintaining clarity and usability.
+
+---
+
+# ✨ Key Features
+
+- Live market intelligence dashboard
 - Options chain analytics
-- Multi-factor signal generation with confidence scoring
-- AI-powered probability forecasting
-- Market regime detection indicators
+- Multi-factor signal generation
+- AI-assisted probability forecasting
+- Market regime detection
 - Explainable prediction interface
 - Institutional order flow analysis
 - Quantitative research tools
-- Walk-forward validation framework
+- Walk-forward validation
 - Monte Carlo simulation
 - Feature drift monitoring
 - Backtesting framework
 
 ---
 
-## Architecture
+# 🏗 Architecture
 
+```
 React Frontend
-│
-▼
+        │
+        ▼
 FastAPI Backend
-│
-▼
+        │
+        ▼
 Analytics Pipeline
-│
-▼
-Machine Learning Models (AI-generated)
-│
-▼
+        │
+        ▼
+AI Models
+        │
+        ▼
 PostgreSQL Database
+```
 
 ---
 
-## Tech Stack
+# 🛠 Tech Stack
 
-### Frontend
+## Frontend
+
 - React
 - JavaScript
 - React Router
 - Axios
-- Recharts & Lightweight Charts
+- Recharts
+- Lightweight Charts
 - WebSocket
 
-### Backend
+---
+
+## Backend
+
 - Python
 - FastAPI
 - Uvicorn
@@ -89,25 +172,29 @@ PostgreSQL Database
 - SQLAlchemy
 - Pydantic
 
-### Database
+---
+
+## Database
+
 - PostgreSQL
 - JSONB
 - AsyncPG
 
-### AI & Analytics
-- AI-generated ensemble models (designer-validated)
-- AI-generated probability forecasting
-- Market regime detection (AI-generated, designer-configured)
-- Explainable AI interfaces (designer-built)
-- Walk-forward validation framework
-- Monte Carlo simulation
-- Bootstrap validation
+---
 
-*Note: Statistical models and ML pipelines were generated using AI-assisted development tools and validated by the designer for product fit and UX accuracy.*
+## AI & Analytics
+
+- Ensemble Machine Learning
+- Probability Forecasting
+- Market Regime Detection
+- Explainable AI
+- Walk-Forward Validation
+- Monte Carlo Simulation
+- Bootstrap Validation
 
 ---
 
-## Core Modules
+# 📦 Core Modules
 
 - Market Data Engine
 - Options Analytics
@@ -122,7 +209,7 @@ PostgreSQL Database
 
 ---
 
-## Security
+# 🔒 Security
 
 - JWT Authentication
 - Parameterized SQL Queries
@@ -132,7 +219,7 @@ PostgreSQL Database
 
 ---
 
-## Performance
+# ⚡ Performance
 
 - Background Processing
 - Prediction Caching
@@ -144,48 +231,75 @@ PostgreSQL Database
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
-WealthQuant/
-│
-├── backend/
-├── frontend/
-├── docs/
-├── scripts/
-├── README.md
-└── .gitignore
+```
+backend/
+frontend/
+docs/
+scripts/
+README.md
+.gitignore
+```
 
 ---
 
-## Getting Started
+# 🚀 Getting Started
 
-### Backend
+## Backend
+
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
-### Frontend
+## Frontend
 
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-### Roadmap
+---
 
-Live data streaming enhancements
-Advanced analytics modules
-Real-time alert system
-Cloud deployment
-Mobile-responsive dashboard
+# 🛣 Roadmap
 
-### About the Author
-Jatin Dobariya
-AI Product Designer | 8+ Years Enterprise SaaS & AI Interfaces | Built WealthQuant Solo via AI-Assisted Development
-Certifications: Google Certified UX Designer | IxDF AI UX Certified (Top 10% HCI) | IxDF Design Systems Certified
-Community: 23,000+ design professionals follow my work on LinkedIn | IxDF Community Influencer
+- Enhanced live market streaming
+- Advanced analytics modules
+- Real-time alerts
+- Cloud deployment
+- Mobile-responsive dashboard
 
+---
 
-License
-This project is shared for learning, research, and demonstration purposes.
-## Architecture
+# 👨‍💻 About the Author
 
+## Jatin Dobariya
+
+**AI Product Designer | 8+ Years | Enterprise SaaS & AI Interfaces | Creator of WealthQuant**
+
+### Certifications
+
+- Google UX Design Professional Certificate
+- Interaction Design Foundation – AI for Designers
+- Interaction Design Foundation – Design Systems
+
+### Community
+
+- 23,000+ professionals follow my design work on LinkedIn
+- Interaction Design Foundation Community Contributor
+
+### Previous Experience
+
+- Enterprise CRM platforms
+- AI-powered SaaS products
+- B2B & B2C platforms
+- Design Systems
+- Game UI (300Mind)
+
+---
+
+# 📄 License
+
+This repository is shared for learning, research, portfolio demonstration, and technical discussion purposes.
