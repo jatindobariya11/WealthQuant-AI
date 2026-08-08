@@ -1,0 +1,121 @@
+name: WealthQuant V14.1 CI Pipeline
+
+on:
+  push:
+    branches: [main, develop, release/**]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+  GROWW_AUTH_TOKEN: ${{ secrets.GROWW_AUTH_TOKEN }}
+  POSTGRES_HOST: 127.0.0.1
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: wealthquant_test
+  POSTGRES_USER: wealthquant
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+
+jobs:
+  test:
+    name: Run Test Suite
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: wealthquant_test
+          POSTGRES_USER: wealthquant
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio pytest-cov hypothesis anyio httpx
+
+      - name: Run Linting (Flake8)
+        working-directory: ./backend
+        run: |
+          pip install flake8
+          flake8 --max-line-length=120 --exclude=.venv,__pycache__,tests/ core/ pipeline_routes.py main.py
+
+      - name: Run Type Checking (Mypy)
+        working-directory: ./backend
+        run: |
+          pip install mypy
+          mypy core/security.py core/schemas.py --ignore-missing-imports || true
+
+      - name: Run Pytest with Coverage
+        working-directory: ./backend
+        run: |
+          python -m pytest tests/ \
+            --ignore=tests/test_stress_locust.py \
+            -v \
+            --cov=. \
+            --cov-report=xml:coverage.xml \
+            --cov-report=html:htmlcov \
+            --cov-fail-under=85 \
+            --tb=short \
+            -x
+
+      - name: Run Institutional Master Suite
+        working-directory: ./backend
+        run: |
+          python tests/run_all_tests.py
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: |
+            backend/coverage.xml
+            backend/htmlcov/
+
+      - name: Upload Test Artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-artifacts
+          path: |
+            backend/tests/
+            backend/openapi.json
+
+  frontend:
+    name: Frontend Build Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build Frontend (Production)
+        working-directory: ./frontend
+        run: npm run build

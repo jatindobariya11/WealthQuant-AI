@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Node
+node_modules/
+
+# Environment
+.env
+.env.*
+
+# PostgreSQL
+backend/pg_local/
+
+# Logs
+*.log
+
+# Cache
+.cache/
+.pytest_cache/
+
+
+# Virtual environments
+.venv/
+venv/
+backend/.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# PostgreSQL
+backend/pg_local/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log

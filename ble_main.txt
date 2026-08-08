@@ -1,0 +1,261 @@
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:106:16
+    |
+104 |             fetch_ohlc_and_indicators(sym, _PREWARM_INTERVAL)
+105 |             print(f"[PreWarm] {sym} core done in {round(_t.time()-t0,1)}s")
+106 |         except Exception as e:
+    |                ^^^^^^^^^
+107 |             print(f"[PreWarm] {sym} failed: {e}")
+108 |         _t.sleep(0.5)  # minimal stagger (caching prevents rate-limiting)
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:114:12
+    |
+112 |         build_signaldesk("NIFTY", _PREWARM_INTERVAL)
+113 |         print(f"[PreWarm] NIFTY full signal done in {round(_t.time()-t0,1)}s")
+114 |     except Exception as e:
+    |            ^^^^^^^^^
+115 |         print(f"[PreWarm] NIFTY full signal failed: {e}")
+116 |     print("[PreWarm] Cache pre-warm complete.")
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:137:8
+    |
+135 | except ImportError as _re:
+136 |     print(f"[Init] Research/Replay modules not yet available: {_re}")
+137 | except Exception as _re:
+    |        ^^^^^^^^^
+138 |     print(f"[Init] Research/Replay load error: {_re}")
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:161:12
+    |
+159 |         await wq_scheduler.start()
+160 |         print("[Startup] WealthQuant V7.4 Scheduler: RUNNING (24/7 data collection active)")
+161 |     except Exception as sched_err:
+    |            ^^^^^^^^^
+162 |         print(f"[Startup] [WARN] Scheduler failed to start: {sched_err}")
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:169:12
+    |
+167 |     try:
+168 |         await wq_scheduler.stop()
+169 |     except Exception as stop_err:
+    |            ^^^^^^^^^
+170 |         print(f"[Shutdown] Scheduler stop error: {stop_err}")
+171 |     await pipeline_db.close()
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:311:16
+    |
+309 |             fii_net = float(str(fii.get("fii_net", 0))
+310 |                       .replace(",", "").replace(" ", "").replace("−", "-"))
+311 |         except Exception:
+    |                ^^^^^^^^^
+312 |             fii_net = 0.0
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:581:12
+    |
+579 |         sched_running = sched_status.get("is_running", False)
+580 |         sched_last_run_ms = sched_status.get("last_ingestion_duration_ms", 0)
+581 |     except Exception:
+    |            ^^^^^^^^^
+582 |         sched_running = False
+583 |         sched_last_run_ms = 0
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:625:12
+    |
+623 |             "timestamp": datetime.utcnow().isoformat() + "Z",
+624 |         }
+625 |     except Exception as e:
+    |            ^^^^^^^^^
+626 |         traceback.print_exc()
+627 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:652:20
+    |
+650 |             try:
+651 |                 results[key] = fut.result(timeout=12)   # 12s hard cap per fetcher
+652 |             except Exception as e:
+    |                    ^^^^^^^^^
+653 |                 print(f"[market-context] {key} failed: {e}")
+654 |                 results[key] = _MARKET_CTX_FALLBACKS[key]
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:663:12
+    |
+661 |     try:
+662 |         return analyze_fii_trends()
+663 |     except Exception as e:
+    |            ^^^^^^^^^
+664 |         traceback.print_exc()
+665 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:686:16
+    |
+684 |             loop = asyncio.get_running_loop()
+685 |             ltp_dict = await asyncio.wait_for(loop.run_in_executor(yahoo_pool, get_ltp_with_fallback, symbol), timeout=3.0)
+686 |         except Exception:
+    |                ^^^^^^^^^
+687 |             ltp_dict = {}
+688 |         res["price"] = ltp_dict.get("ltp") or res.get("price", 0)
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:732:12
+    |
+730 |             "sectors": sector_summary(df),
+731 |         }
+732 |     except Exception as e:
+    |            ^^^^^^^^^
+733 |         traceback.print_exc()
+734 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:751:12
+    |
+749 |             return {"stocks": [], "total": 0}
+750 |         return {"stocks": df.to_dict("records"), "total": len(df)}
+751 |     except Exception as e:
+    |            ^^^^^^^^^
+752 |         traceback.print_exc()
+753 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:765:12
+    |
+763 |             return {"stocks": [], "total": 0}
+764 |         return {"stocks": df.to_dict("records"), "total": len(df)}
+765 |     except Exception as e:
+    |            ^^^^^^^^^
+766 |         traceback.print_exc()
+767 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:777:12
+    |
+775 |     try:
+776 |         return run_quant_mtf_engine(symbol.upper(), ema_len, rsi_len, risk_reward)
+777 |     except Exception as e:
+    |            ^^^^^^^^^
+778 |         traceback.print_exc()
+779 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:795:12
+    |
+793 |             return get_groww_quote(symbol.upper())
+794 |         return result
+795 |     except Exception as e:
+    |            ^^^^^^^^^
+796 |         print(f"[Fallback] AV quote error: {e}")
+797 |         return get_groww_quote(symbol.upper())
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:815:12
+    |
+813 |         df_out.index = df_out.index.strftime("%Y-%m-%d")
+814 |         return {"symbol": symbol, "source": "fallback", "data": df_out.reset_index().to_dict("records")}
+815 |     except Exception as e:
+    |            ^^^^^^^^^
+816 |         traceback.print_exc()
+817 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:827:12
+    |
+825 |             return {"symbol": symbol, "note": "Fundamental data currently unavailable (Rate Limit)"}
+826 |         return result
+827 |     except Exception as e:
+    |            ^^^^^^^^^
+828 |         return {"symbol": symbol, "error": str(e)}
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:847:12
+    |
+845 |     except ValueError as e:
+846 |         raise HTTPException(503, detail=str(e))  # token not configured
+847 |     except Exception as e:
+    |            ^^^^^^^^^
+848 |         traceback.print_exc()
+849 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:857:12
+    |
+855 |     try:
+856 |         return {"holdings": get_holdings()}
+857 |     except Exception as e:
+    |            ^^^^^^^^^
+858 |         traceback.print_exc()
+859 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:867:12
+    |
+865 |     try:
+866 |         return {"positions": get_positions()}
+867 |     except Exception as e:
+    |            ^^^^^^^^^
+868 |         traceback.print_exc()
+869 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:877:12
+    |
+875 |     try:
+876 |         return {"orders": get_order_book()}
+877 |     except Exception as e:
+    |            ^^^^^^^^^
+878 |         traceback.print_exc()
+879 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:896:12
+    |
+894 |     except HTTPException:
+895 |         raise
+896 |     except Exception as e:
+    |            ^^^^^^^^^
+897 |         traceback.print_exc()
+898 |         raise HTTPException(500, detail=str(e))
+    |
+
+BLE001 Do not catch blind exception: `Exception`
+   --> main.py:937:12
+    |
+935 |             return {"stocks": []}
+936 |         return {"stocks": df.to_dict("records")}
+937 |     except Exception as e:
+    |            ^^^^^^^^^
+938 |         import traceback
+939 |         traceback.print_exc()
+    |
+
+Found 24 errors.

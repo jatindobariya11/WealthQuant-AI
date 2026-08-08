@@ -1,0 +1,14 @@
+{
+  "symbol": "NIFTY",
+  "interval": "15m",
+  "hawkes_intensity": 0.01,
+  "kalman_price": 24000.0,
+  "regime": "TRENDING_BULL",
+  "signal": "NEUTRAL",
+  "signal_confidence": 0.99,
+  "p_up": 0.33,
+  "p_down": 0.33,
+  "p_sideways": 0.34,
+  "expected_return": 0.0,
+  "dominant_model": "ensemble"
+}
