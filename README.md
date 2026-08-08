@@ -164,19 +164,21 @@ WealthQuant/
 pip install -r requirements.txt
 uvicorn main:app --reload
 
-### Backend
+### Frontend
 
 cd frontend
 npm install
 npm run dev
 
-Roadmap
+### Roadmap
+
 Live data streaming enhancements
 Advanced analytics modules
 Real-time alert system
 Cloud deployment
 Mobile-responsive dashboard
-About the Author
+
+### About the Author
 Jatin Dobariya
 AI Product Designer | 8+ Years Enterprise SaaS & AI Interfaces | Built WealthQuant Solo via AI-Assisted Development
 Certifications: Google Certified UX Designer | IxDF AI UX Certified (Top 10% HCI) | IxDF Design Systems Certified
