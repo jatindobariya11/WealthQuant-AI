@@ -43,3 +43,9 @@ backend/pg_local/
 
 # Logs
 *.log
+
+# AI agent files
+.agents/
+
+# GitHub Actions
+.github/
