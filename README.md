@@ -39,8 +39,6 @@ Implementation was accelerated using modern AI development assistants including:
 
 - ChatGPT
 - Claude
-- Cursor
-- v0.dev
 - Google Antigravity
 - Qwen
 - Kimi
