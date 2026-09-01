@@ -294,7 +294,7 @@ npm run dev
 - AI-powered SaaS products
 - B2B & B2C platforms
 - Design Systems
-- Game UI (300Mind)
+- Game UI
 
 ---
 
