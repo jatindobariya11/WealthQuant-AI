@@ -300,4 +300,4 @@ npm run dev
 
 # 📄 License
 
-This repository is shared for learning, research, portfolio demonstration, and technical discussion purposes.
+No license has been granted for this repository. All rights are reserved by the author. Public visibility allows people to view the source code, but does not grant permission to reuse, modify, distribute, or use it commercially.
