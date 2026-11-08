@@ -31,7 +31,6 @@ yarn-debug.log*
 *.p12
 *.pfx
 backend/nse_cookies.json
-backend/yfinance/scrapers/yahoo-keys.txt
 
 # Local databases, caches and logs
 *.sqlite
